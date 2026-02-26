@@ -1,0 +1,380 @@
+:root {
+    --gallery-width: max(90vw, 800px);
+    --line-color: rgb(63, 104, 228);
+}
+
+input {
+    display: none;
+}
+svg {
+    overflow: visible;
+}
+code {
+    user-select: text;
+    text-align: left;
+}
+img {
+    min-height: 0;
+    transition: all 0.1s ease;
+}
+img:hover {
+    transform: scale(1.8);
+}
+
+body {
+    font-family: DejaVu Sans, sans-serif;
+    margin: 0;
+    background-color: #1d2530;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container > * {
+    flex: none;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 92vh;
+    width: 100%;
+}
+.home > * {
+    flex: none;
+}
+
+.prefabs {
+    position: absolute;
+    top: 5vh;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: min(10rem, 15vw);
+    background-color: #464363;
+    border-radius: 1rem;
+    justify-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    direction: rtl;
+}
+.prefabs p {
+    font-size: 1.2rem;
+}
+.prefabs img {
+    user-select: none;
+    cursor: grab;
+    margin: 0.5rem;
+    flex: none;
+}
+.prefabs img:active {
+    cursor: grabbing;
+}
+
+.dropzone {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background-color: #464363;
+    margin: 1em;
+    aspect-ratio: 1/1;
+    max-width: 70vw;
+    border-radius: 4%;
+    min-height: 0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.dropzone:hover {
+    background-color: #4e4b6e;
+}
+.dropzone.drag-over {
+    transform: scale(1.05);
+    box-shadow: 0 0 0.5rem #d6c5ea;
+}
+.dropzone svg {
+    pointer-events: none;
+}
+.dropzone img {
+    z-index: 1;
+}
+
+.laser {
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    height: 0;
+    box-shadow: 0 0 3px 2px #e3e3e3;
+    transition: all 0.8s linear;
+}
+.laser.down {
+    top: calc(100% + 10px);
+}
+
+.instructions {
+    position: absolute;
+    bottom: 22%;
+    left: 13%;
+    color: white;
+}
+
+.solve_btn {
+    position: relative;
+    background-color: #832db3;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.3rem;
+    padding: 0.5rem 1rem;
+    border-radius: 100vh;
+    transition: all 0.1s ease;
+    border: none;
+}
+.solve_btn:hover {
+    filter: brightness(1.2);
+}
+.solve_btn:active {
+    filter: brightness(0.8);
+}
+
+.gallery {
+    position: relative;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: max-content;
+    align-items: start;
+    background-color: #464363;
+    margin-top: 20px;
+    border-radius: 1vw;
+    width: var(--gallery-width);
+    padding: 1rem 0 3rem 0;
+}
+
+.top_line {
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+.line_left {
+    align-self: end;
+    width: 50%;
+    height: 5rem;
+}
+.line_right {
+    align-self: start;
+    width: 35%;
+    height: 5rem;
+}
+.arrow_left {
+    align-self: end;
+    width: 35%;
+    margin-right: 15%;
+    height: 5rem;
+}
+.arrow_right {
+    align-self: start;
+    width: 35%;
+    margin-left: 15%;
+    height: 5rem;
+}
+
+#left_column {
+    grid-column: 1;
+    justify-self: end;
+    grid-row: 3 / 99;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+#right_column {
+    grid-column: 2;
+    justify-self: start;
+    grid-row: 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+#post_columns {
+    grid-column: 1 / -1;
+    justify-self: center;
+    grid-row: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vertical_connector {
+    width: 10rem;
+    height: 2rem;
+    overflow: visible;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #362649;
+    border: 2px solid #1d1d1d;
+    padding: 0.2rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+}
+.card.small {
+    width: 12rem;
+    height: 16rem;
+}
+.card.big {
+    width: min(max(70vw, 30rem), 40rem);
+    min-height: 30rem;
+}
+.card h3,
+.card .meta {
+    flex: 0 0 auto;
+}
+.card > img {
+    flex: 1 1 auto;
+    object-fit: contain;
+    height: 0;
+    min-height: 0;
+    width: 100%;
+}
+.card h3 {
+    margin: 0.1rem 0 0.2rem;
+}
+.card#predictions {
+    font-size: 1.2rem;
+}
+.card.big > img:hover {
+    transform: scale(1.2);
+}
+
+.cell {
+    margin: 0.2rem 0;
+}
+
+.arrow {
+    width: 100%;
+}
+.card_arrow {
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.long_arrow {
+    height: 100%;
+    width: 10rem;
+}
+
+.pyFunc {
+    background-color: #6929ac;
+    margin: 1rem 0 0.2rem;
+}
+.pyFunc.collapsed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 1px solid #1d1d1d;
+    transition: all 0.2s ease;
+}
+.pyFunc.expanded {
+    text-align: left;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+.pyFunc:hover {
+    filter: brightness(1.2);
+}
+.pyFunc.collapsed:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0.5rem white;
+}
+.pyFunc:active {
+    filter: brightness(0.8);
+}
+.pyCode {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #1d2530;
+}
+
+.images_container {
+    display: grid;
+    flex: 1 1 auto;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 1px;
+}
+
+.hidden {
+    display: none;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+img.preview {
+    width: 80%;
+    height: 80%;
+    min-height: 0;
+    object-fit: contain;
+}
+img.preview:hover {
+    transform: none;
+}
+
+svg.empty {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.footer {
+    text-align: left;
+    background-color: #464363;
+    width: var(--gallery-width);
+    border-radius: 1vw;
+    margin: 2rem 0;
+}
+.footer p {
+    margin-left: 1rem;
+}
+
+@media (max-width: 850px) {
+    .prefabs {
+        position: static;
+        flex-direction: row;
+        height: 10rem;
+        width: 80vw;
+        background-color: #464363;
+        border-radius: 1rem;
+        justify-content: flex-start;
+        overflow-y: hidden;
+        overflow-x: auto;
+        direction: ltr;
+    }
+    .home {
+        height: 110vh;
+    }
+    .prefabs p {
+        align-self: center;
+        margin: 0 1rem;
+    }
+}

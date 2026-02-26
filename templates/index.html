@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" type="module"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="home">
+            <div id="prefabs" class="prefabs">
+                <p>Gallery</p>
+                <img src="{{ url_for('static', filename='img/img1.jpeg') }}" alt="sudoku puzzle">
+                <img src="{{ url_for('static', filename='img/img2.jpeg') }}" alt="sudoku puzzle">
+                <img src="{{ url_for('static', filename='img/img3.jpeg') }}" alt="sudoku puzzle">
+            </div>
+            <header>
+                <h1>📸 Sudoku Solver</h1>
+                <p>Upload a photo of a sudoku puzzle, and find it's solution!</p>
+                <p> If you have none, drag one from our gallery.</p>
+            </header>
+            <input type="file" id="fileInput" accept="image/*">
+            <div id="dropzone" class="dropzone">
+                <div id="laser" class="laser"></div>
+                <div id="instructions" class="instructions">
+                    <p>Drop your image here</p>
+                    <p>or click to upload</p>
+                </div>
+                <svg id="placeholder"
+                     width="80%" height="80%"
+                     viewBox="0 0 100 100" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 65 L30 35 L65 80 L85 55 L100 75" stroke="#6d6580"/>
+                    <circle cx="75" cy="25" r="10" stroke="#c5c9a5"/>
+                    <rect width="100" height="100" rx="4" stroke="#bdcdd9"/>
+                </svg>
+                <img id="preview" src="" alt="preview" class="preview hidden">
+            </div>
+            <button id="solve_btn"
+                    class="solve_btn hidden">SOLVE!</button>
+        </div>
+
+        <div id="gallery" class="gallery hidden">
+            <svg class="top_line" width="100%" height="3rem">
+                <line x1="50%" y1="0" x2="50%" y2="100%"
+                      stroke="#8174a1" stroke-width="4"
+                      stroke-linecap="round"/>
+            </svg>
+
+            <div id="left_column">
+                <svg class="line_left" width="0">
+                    <line x1="100%" y1="0" x2="0" y2="100%"
+                          stroke="#8174a1" stroke-width="4"
+                          stroke-linecap="round" vector-effect="non-scaling-stroke" />
+                </svg>
+                <svg class="long_arrow" width="0">
+                    <line x1="50%" y1="0" x2="50%" y2="100%"
+                          stroke="#8174a1" stroke-width="4"
+                          stroke-linecap="round" />
+                </svg>
+                <svg class="arrow_left" width="0">
+                    <line x1="0" y1="0" x2="100%" y2="100%" stroke="#8174a1"
+                        stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke"
+                        marker-end="url(#arrowhead)" />
+                </svg>
+            </div>
+            <div id="right_column">
+
+            </div>
+            <div id="post_columns">
+
+            </div>
+        </div>
+        <div id="footer" class="footer hidden">
+            <p>This pipeline solves your Sudoku using OpenCV functions and a small PyTorch model.</p>
+            <p>Hover the images to zoom in.</p>
+            <p>Click the f(x) button to see the function used for that step.</p>
+            <p>The time under each image shows the CPU time for that step.</p>
+            <p>See the full project <a href="https://github.com">here</a>.</p>
+        </div>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="empty" viewBox="0 0 100 100">
+        <defs>
+            <marker id="arrowhead"
+                    viewBox="0 0 10 10"
+                    refX="2" refY="5"
+                    markerWidth="10"
+                    markerHeight="6"
+                    orient="auto" >
+                <path d="M2 8 L8 5 L2 2"
+                      stroke="#8174a1"
+                      fill="none"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round" />
+            </marker>
+        </defs>
+    </svg>
+</body>
+</html>
