@@ -1,5 +1,5 @@
-werkzeug
+torch
 flask
 matplotlib
 numpy
-opencv-python
+opencv-python-headless

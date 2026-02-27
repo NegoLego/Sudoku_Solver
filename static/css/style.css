@@ -1,5 +1,5 @@
 :root {
-    --gallery-width: max(90vw, 800px);
+    --gallery-width: max(90vw, 50rem);
     --line-color: rgb(63, 104, 228);
 }
 
@@ -16,9 +16,6 @@ code {
 img {
     min-height: 0;
     transition: all 0.1s ease;
-}
-img:hover {
-    transform: scale(1.8);
 }
 
 body {
@@ -76,6 +73,9 @@ body {
 }
 .prefabs img:active {
     cursor: grabbing;
+}
+.prefabs img:hover {
+    transform: scale(1.1);
 }
 
 .dropzone {
@@ -235,9 +235,15 @@ body {
     width: 12rem;
     height: 16rem;
 }
+.card.small img:hover {
+    transform: scale(1.5);
+}
 .card.big {
     width: min(max(70vw, 30rem), 40rem);
     min-height: 30rem;
+}
+.card.big img:hover {
+    transform: scale(3.2);
 }
 .card h3,
 .card .meta {
@@ -253,12 +259,19 @@ body {
 .card h3 {
     margin: 0.1rem 0 0.2rem;
 }
-.card#predictions {
+.card#predictions .cell {
     font-size: 1.2rem;
+}
+.card.big img {
+    image-rendering: pixelated;
+}
+.card.big>img {
+    image-rendering: auto;
 }
 .card.big > img:hover {
     transform: scale(1.2);
 }
+
 
 .cell {
     margin: 0.2rem 0;
@@ -290,7 +303,7 @@ body {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    border: 1px solid #1d1d1d;
+    border: 1px solid #e1e1e1;
     transition: all 0.2s ease;
 }
 .pyFunc.expanded {
@@ -349,7 +362,7 @@ svg.empty {
 .footer {
     text-align: left;
     background-color: #464363;
-    width: var(--gallery-width);
+    width: 90vw;
     border-radius: 1vw;
     margin: 2rem 0;
 }

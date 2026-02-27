@@ -30,11 +30,14 @@ window.onload = () => {
     })
     dropzone.addEventListener('dragover', () => dropzone.classList.add('drag-over'));
     dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
-    dropzone.addEventListener('drop', (e) => {
+    dropzone.addEventListener('drop', e => {
         dropzone.classList.remove('drag-over');
         fileInput.files = e.dataTransfer.files;
         updatePreview(fileInput.files[0]);
     });
+
+    const prefabs = document.getElementById('prefabs');
+    prefabs.querySelectorAll('img').forEach(img => img.addEventListener('click', e => drop_image(e.target)));
 }
 
 function preventDefaults (e) {
@@ -262,4 +265,23 @@ function arrow_connectorHTML() {
                marker-end="url(#arrowhead)" />
         </svg>
     `;
+}
+
+async function drop_image(imgElement) {
+    const imageUrl = imgElement.src;
+    try {
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
+
+        const file = new File([blob], "prefab_sudoku.png", { type: blob.type });
+
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        fileInput.files = dataTransfer.files;
+
+        updatePreview(file);
+
+    } catch (error) {
+        console.error("Error loading prefab image:", error);
+    }
 }

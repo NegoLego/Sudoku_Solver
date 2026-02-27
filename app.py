@@ -107,7 +107,7 @@ def solve():
     stages['cell_images'] = {
         'images': [image_to_base64(cell['image']) for cell in cells],
         'isNumber': [cell['isNumber'] for cell in cells],
-        'time': now_time - prev_time
+        'time': f"{(now_time - prev_time):.5f}s"
     }
 
     if len([cell for cell in cells if cell['isNumber']]) < 15:
@@ -119,7 +119,7 @@ def solve():
     now_time = time.time()
     stages['predictions'] = {
         'predictions': sudoku,
-        'time': now_time - prev_time
+        'time': f"{(now_time - prev_time):.5f}s"
     }
     sudoku = [sudoku[i: i + 9] for i in range(0, len(sudoku), 9)]  # make matrix from list
 
@@ -129,10 +129,10 @@ def solve():
     now_time = time.time()
     stages['final_image'] = {
         'image': image_to_base64(final_image),
-        'time': now_time - prev_time
+        'time': f"{(now_time - prev_time):.5f}s"
     }
 
     return jsonify(stages), 200
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=7860, debug=False)
