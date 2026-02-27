@@ -11,7 +11,7 @@ short_description: Upload a photo of your sudoku to find its solution
 # Sudoku Solver
 
 Just upload a photo of your Sudoku and find its solution, along with all the steps it went through to get there.
-Try it here: **[:rocket: Sudoku Solver!](https://huggingface.co/spaces/NegoLego/Sudoku_Solver)**
+Try it here: **[:rocket: Sudoku Solver!](https://negolego-sudoku-solver.hf.space/)**
 
 ### How It Works
 
@@ -52,6 +52,6 @@ Sometimes the predictions are off because of background noise (stains, spots on 
 ### Getting Started
 
 Download the project and play with the notebooks to dig deeper into this project and understand its creation process better.
-Or just use it here: **[:rocket: Sudoku Solver!](https://huggingface.co/spaces/NegoLego/Sudoku_Solver)**
+Or just use it here: **[:rocket: Sudoku Solver!](https://negolego-sudoku-solver.hf.space/)**
 
 Take what you learned and make it better! You can contact me anytime at negoitaa10@gmail.com .
