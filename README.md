@@ -1,3 +1,13 @@
+---
+title: Sudoku Solver
+emoji: 🔥
+colorFrom: gray
+colorTo: purple
+sdk: docker
+pinned: false
+license: mit
+short_description: Upload a photo of your sudoku to find its solution
+---
 # Sudoku Solver
 
 Just upload a photo of your Sudoku and find its solution, along with all the steps it went through to get there.
